@@ -9,6 +9,10 @@ pip install flask pymysql
 ```
 
 ## 2. MySQL数据库设置
+```
+docker run --hostname=a5ddc3708f2e --env=MYSQL_ROOT_PASSWORD=123456 --env=MYSQL_DATABASE=jwordpress --env=TZ=Asia/Shanghai --env=LANG=en_US.UTF-8 --env=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin --env=GOSU_VERSION=1.7 --env=MYSQL_MAJOR=5.7 --env=MYSQL_VERSION=5.7.26-1debian9 --volume=D:\IdeaProjects\Jwordpress-parent-s02-81f3dea303558f4388ef39435a52ea1cfab22904\docker\mysql\my.cnf:/etc/mysql/my.cnf:rw --volume=D:\IdeaProjects\Jwordpress-parent-s02-81f3dea303558f4388ef39435a52ea1cfab22904\docker\mysql\init-file.sql:/etc/mysql/init-file.sql:rw --volume=D:\IdeaProjects\Jwordpress-parent-s02-81f3dea303558f4388ef39435a52ea1cfab22904\docker\mysql\data:/var/lib/mysql:rw --volume=D:\IdeaProjects\Jwordpress-parent-s02-81f3dea303558f4388ef39435a52ea1cfab22904\docker\mysql\docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d:rw --volume=/var/lib/mysql --network=docker_default -p 3306:3306 --restart=unless-stopped --label='com.docker.compose.config-hash=f33622a4d32e092d39a39c3dc0bd2259df09b24ad897567bcaa7f7fa0630b019' --label='com.docker.compose.container-number=1' --label='com.docker.compose.depends_on=' --label='com.docker.compose.image=sha256:a1aa4f76fab910095dfcf4011f32fbe7acdb84c46bb685a8cf0a75e7d0da8f6b' --label='com.docker.compose.oneoff=False' --label='com.docker.compose.project=docker' --label='com.docker.compose.project.config_files=D:\IdeaProjects\Jwordpress-parent-s02-81f3dea303558f4388ef39435a52ea1cfab22904\docker\docker-compose.yml' --label='com.docker.compose.project.working_dir=D:\IdeaProjects\Jwordpress-parent-s02-81f3dea303558f4388ef39435a52ea1cfab22904\docker' --label='com.docker.compose.service=mysql' --label='com.docker.compose.version=2.21.0' --runtime=runc -d registry.cn-hangzhou.aliyuncs.com/zhengqing/mysql:5.7
+
+```
 假设你已经在MySQL中创建了一个数据库，接下来创建用户和消息表。
 ```
 CREATE DATABASE chat_db;
