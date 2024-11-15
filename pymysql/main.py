@@ -4,7 +4,7 @@ import bcrypt
 
 app = Flask(__name__)
 
-# 数据库连接配置
+# Database connection configuration
 db_config = {
     'host': 'localhost',
     'user': 'root',
@@ -31,9 +31,9 @@ def register():
     try:
         cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, hashed))
         conn.commit()
-        return jsonify({'message': '注册成功！'}), 201
+        return jsonify({'message': 'Registration successful!'}), 201
     except pymysql.IntegrityError:
-        return jsonify({'message': '用户名已存在！'}), 400
+        return jsonify({'message': 'Username already exists!'}), 400
     finally:
         cursor.close()
         conn.close()
@@ -53,9 +53,9 @@ def login():
         result = cursor.fetchone()
 
         if result and bcrypt.checkpw(password.encode('utf-8'), result[0].encode('utf-8')):
-            return jsonify({'message': '登录成功！'}), 200
+            return jsonify({'message': 'Login successful!'}), 200
         else:
-            return jsonify({'message': '用户名或密码错误！'}), 401
+            return jsonify({'message': 'Incorrect username or password!'}), 401
     finally:
         cursor.close()
         conn.close()
@@ -76,7 +76,7 @@ def send_message():
     cursor.close()
     conn.close()
 
-    return jsonify({'message': '消息发送成功！'}), 201
+    return jsonify({'message': 'Message sent successfully!'}), 201
 
 
 @app.route('/get_messages', methods=['GET'])
